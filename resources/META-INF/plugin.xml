@@ -1,13 +1,11 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+<!-- 插件id -->
+  <id>cn.cocowwy.coshell</id>
+  <name>Coshell</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="514658459@qq.com" url="http://sexytea2013.com">茶颜悦色</vendor>
 
-  <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
-    ]]></description>
+  <description>IDEA插件，一个Shell插件</description>
 
   <change-notes><![CDATA[
       Add change notes here.<br>
