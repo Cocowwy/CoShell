@@ -1,31 +1,39 @@
 <idea-plugin>
-<!-- 插件id -->
-  <id>cn.cocowwy.coshell</id>
-  <name>Coshell</name>
-  <version>1.0</version>
-  <vendor email="514658459@qq.com" url="http://sexytea2013.com">茶颜悦色</vendor>
-
-  <description>IDEA插件，一个Shell插件</description>
-
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    <!-- 插件id -->
+    <id>cn.cocowwy.coshell</id>
+    <name>Coshell</name>
+    <version>1.0</version>
+    <vendor email="514658459@qq.com" url="http://sexytea2013.com">茶颜悦色</vendor>
+    <!--插件的功能描述-->
+    <description>IDEA插件，一 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxs
+        个Shell插件
+    </description>
+    <!--变更日志-->
+    <change-notes><![CDATA[
+      Add change   notes here.<br>
+      <em>most HTML tgs may be used</em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!--插件支持的idea的版本号-->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <depends>com.intellij.modules.platform</depends>
-
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
-
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <!--    相关的其他依赖-->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <!--    扩展内容-->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+    <!--菜单动作-->
+    <actions>
+        <!-- Add your actions here -->
+        <action id="CoShell" class="com.sexytea.coshell.CoShell" text="CoShell" description="CoShellDemo">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift EQUALS"/>
+        </action>
+    </actions>
 
 </idea-plugin>
