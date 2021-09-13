@@ -1,4 +1,4 @@
-package com.sexytea.coshell;
+package cn.cocowwy.coshell;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;

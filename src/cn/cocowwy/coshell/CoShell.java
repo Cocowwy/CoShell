@@ -1,4 +1,4 @@
-package com.sexytea.coshell;
+package cn.cocowwy.coshell;
 
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
@@ -7,8 +7,6 @@ import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ui.MessageType;
-
-import java.awt.*;
 
 /**
  * @author Cocowwy
@@ -21,6 +19,6 @@ public class CoShell extends AnAction {
         // TODO: insert action logic here
         NotificationGroup notificationGroup = new NotificationGroup("CoShell", NotificationDisplayType.BALLOON, true);
         Notification notification = notificationGroup.createNotification("欢迎使用CoShell", MessageType.INFO);
-        Notifications.Bus.notify(notification  );
+        Notifications.Bus.notify(notification);
     }
 }
