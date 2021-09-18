@@ -1,0 +1,6 @@
+{
+  "commandMapping": {
+    "see-takeout-log": "tail -fn 300 /",
+    "see": "pwd"
+  }
+}

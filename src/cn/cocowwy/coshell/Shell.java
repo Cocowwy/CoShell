@@ -1,26 +1,39 @@
 package cn.cocowwy.coshell;
 
+import cn.cocowwy.coshell.constant.ChannelEnum;
+import cn.cocowwy.coshell.dto.ShellConnection;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.UserInfo;
+import kotlinx.serialization.StringFormat;
+import org.apache.maven.model.InputLocation;
+
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.StringJoiner;
 
 /**
  * @author Cocowwy
  * @create 2021-07-07-11:01
  */
-public class Shell{
-    private static final String USER="root";
-    private static final String PASSWORD="Cyys2013@";
-    private static final String HOST="39.98.71.73";
-    private static final int DEFAULT_SSH_PORT=22;
+public class Shell {
+    private static final String USER = "root";
+    private static final String PASSWORD = "Cyys2013@";
+    private static final String HOST = "39.98.71.73";
+    private static final int DEFAULT_SSH_PORT = 22;
 
-    public static void main(String[] arg){
+    public static void main(String[] arg) {
 
-        try{
-            JSch jsch=new JSch();
-            Session session = jsch.getSession(USER,HOST,DEFAULT_SSH_PORT);
+        try {
+            JSch jsch = new JSch();
+
+            ShellConnection con1 = new ShellConnection(USER, PASSWORD, HOST);
+
+            Session session = jsch.getSession(con1.getUser(), con1.getHost(), con1.getPort());
             session.setPassword(PASSWORD);
+            System.out.println("欢迎使用Cocowwy的Shell工具~");
+            System.out.println("当前连接信息为：" + con1);
 
             UserInfo userInfo = new UserInfo() {
                 @Override
@@ -28,72 +41,43 @@ public class Shell{
                     System.out.println("getPassphrase");
                     return null;
                 }
+
                 @Override
                 public String getPassword() {
                     System.out.println("getPassword");
                     return null;
                 }
+
                 @Override
                 public boolean promptPassword(String s) {
-                    System.out.println("promptPassword:"+s);
-                    return false;
+                    System.out.println("promptPassword:" + s);
+                    return true;
                 }
+
                 @Override
                 public boolean promptPassphrase(String s) {
-                    System.out.println("promptPassphrase:"+s);
-                    return false;
+                    System.out.println("promptPassphrase:" + s);
+                    return true;
                 }
+
                 @Override
                 public boolean promptYesNo(String s) {
-                    System.out.println("promptYesNo:"+s);
-                    return true;//notice here!
+                    System.out.println("promptYesNo:" + s);
+                    return true;
                 }
+
                 @Override
                 public void showMessage(String s) {
-                    System.out.println("showMessage:"+s);
+                    System.out.println("showMessage:" + s);
                 }
             };
-
             session.setUserInfo(userInfo);
-
-            // It must not be recommended, but if you want to skip host-key check,
-            // invoke following,
-            // session.setConfig("StrictHostKeyChecking", "no");
-
-            //session.connect();
-            session.connect(30000);   // making a connection with timeout.
-
-            Channel channel=session.openChannel("shell");
-
-            // Enable agent-forwarding.
-            //((ChannelShell)channel).setAgentForwarding(true);
-
+            session.connect(30000);
+            Channel channel = session.openChannel(ChannelEnum.SHELL.getChannel());
             channel.setInputStream(System.in);
-      /*
-      // a hack for MS-DOS prompt on Windows.
-      channel.setInputStream(new FilterInputStream(System.in){
-          public int read(byte[] b, int off, int len)throws IOException{
-            return in.read(b, off, (len>1024?1024:len));
-          }
-        });
-       */
-
             channel.setOutputStream(System.out);
-
-      /*
-      // Choose the pty-type "vt102".
-      ((ChannelShell)channel).setPtyType("vt102");
-      */
-
-      /*
-      // Set environment variable "LANG" as "ja_JP.eucJP".
-      ((ChannelShell)channel).setEnv("LANG", "ja_JP.eucJP");
-      */
-
-            //channel.connect();
-            channel.connect(3*1000);
-        }
-        catch(Exception e){
+            channel.connect(3 * 1000);
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
