@@ -1,5 +1,6 @@
 package cn.cocowwy.coshell.ui;
 
+import cn.cocowwy.coshell.Shell;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.ui.EditorTextField;
 import org.jetbrains.annotations.Nullable;
@@ -37,7 +38,7 @@ public class LoginDialog extends DialogWrapper {
         JButton button = new JButton("Login");
         panel.add(button);
         button.addActionListener(e -> {
-            System.out.println("登陆");
+            Shell.doIt(null);
         });
         return panel;
     }

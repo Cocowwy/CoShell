@@ -24,9 +24,12 @@
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+
     <!--    扩展内容-->
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <!-- secondary:true表示设置在tool window bar最下方 -->
+        <toolWindow id="CoShell" anchor="bottom" factoryClass="cn.cocowwy.coshell.win.ConsoleToolWinFactory"
+                    secondary="true"/>
     </extensions>
 
 
@@ -38,6 +41,9 @@
             <!--自定义弹出快捷键-->
             <keyboard-shortcut keymap="$default" first-keystroke="shift c"/>
         </action>
+
+
     </actions>
+
 
 </idea-plugin>

@@ -2,16 +2,14 @@ package cn.cocowwy.coshell;
 
 import cn.cocowwy.coshell.constant.ChannelEnum;
 import cn.cocowwy.coshell.dto.ShellConnection;
+import cn.cocowwy.coshell.persistence.ShellConfig;
+import cn.cocowwy.coshell.service.ShortCutConfigService;
+import cn.hutool.core.lang.Console;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.UserInfo;
-import kotlinx.serialization.StringFormat;
-import org.apache.maven.model.InputLocation;
 
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.StringJoiner;
 
 /**
  * @author Cocowwy
@@ -23,7 +21,7 @@ public class Shell {
     private static final String HOST = "39.98.71.73";
     private static final int DEFAULT_SSH_PORT = 22;
 
-    public static void main(String[] arg) {
+    public static void doIt(String[] arg) {
 
         try {
             JSch jsch = new JSch();
@@ -34,6 +32,11 @@ public class Shell {
             session.setPassword(PASSWORD);
             System.out.println("欢迎使用Cocowwy的Shell工具~");
             System.out.println("当前连接信息为：" + con1);
+
+            ShortCutConfigService.saveShortCutConfig(con1.getCid(), "con1.get", "tail -fn 300 /");
+
+            ShellConfig shellConfig = new ShellConfig();
+            shellConfig.loadState(new ShellConfig.Config(con1.getCid(), con1.getName(), con1.getUser(), con1.getPassword(), con1.getPassword(), DEFAULT_SSH_PORT));
 
             UserInfo userInfo = new UserInfo() {
                 @Override

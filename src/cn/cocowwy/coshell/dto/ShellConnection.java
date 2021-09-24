@@ -1,7 +1,6 @@
 package cn.cocowwy.coshell.dto;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang.RandomStringUtils;
 
 /**
  * 连接对象
@@ -12,7 +11,7 @@ public class ShellConnection {
     /**
      * 连接唯一识别号
      */
-    private String cid;
+    private static final String cid;
 
     /**
      * 展示名称
@@ -44,11 +43,15 @@ public class ShellConnection {
      */
     private static final Integer DEFAULT_SSH_PORT = 22;
 
+    static {
+        // 暂时用时间戳做唯一标识
+        cid = String.valueOf(System.currentTimeMillis() / 1000);
+    }
+
     public ShellConnection() {
     }
 
     public ShellConnection(String name, String user, String password, String host, Integer port) {
-        this.cid = RandomStringUtils.random(12);
         this.name = name;
         this.user = user;
         this.password = password;
@@ -71,10 +74,6 @@ public class ShellConnection {
 
     public String getCid() {
         return cid;
-    }
-
-    public void setCid(String cid) {
-        this.cid = cid;
     }
 
     public String getName() {
