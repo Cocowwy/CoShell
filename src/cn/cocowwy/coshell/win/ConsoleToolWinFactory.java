@@ -16,7 +16,7 @@ public class ConsoleToolWinFactory implements ToolWindowFactory {
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         ShellToolWindow myToolWindow = new ShellToolWindow(toolWindow);
         ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
-        Content content = contentFactory.createContent(myToolWindow.getContent(), "con1", false);
+        Content content = contentFactory.createContent(myToolWindow.getContent(), "自定义tool window", false);
         toolWindow.getContentManager().addContent(content);
     }
 }

@@ -17,8 +17,8 @@ import com.jcraft.jsch.UserInfo;
  */
 public class Shell {
     private static final String USER = "root";
-    private static final String PASSWORD = "Cyys2013@";
-    private static final String HOST = "39.98.71.73";
+    private static final String PASSWORD = "";
+    private static final String HOST = "";
     private static final int DEFAULT_SSH_PORT = 22;
 
     public static void doIt(String[] arg) {

@@ -1,4 +1,4 @@
-package cn.cocowwy.coshell.ui;
+package cn.cocowwy.coshell.win;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
@@ -31,6 +31,7 @@ public class LoginShell {
     private JTextField nameTxt;
     private JButton loginBtn;
     private JButton clearBtn;
+    private JTextArea textArea1;
 
     public LoginShell(Project project, ToolWindow toolWindow) {
         clearBtn.addActionListener(new ActionListener() {

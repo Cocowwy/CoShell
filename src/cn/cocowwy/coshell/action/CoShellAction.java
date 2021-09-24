@@ -1,6 +1,5 @@
 package cn.cocowwy.coshell.action;
 
-import cn.cocowwy.coshell.ui.LoginDialog;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +11,6 @@ import org.jetbrains.annotations.NotNull;
 public class CoShellAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-        new LoginDialog().show();
+//        new LoginDialog().show();
     }
 }
